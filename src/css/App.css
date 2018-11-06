@@ -6,6 +6,7 @@
 .App {
   text-align: center;
   font-family: "fusi";
+  letter-spacing: 1px;
 }
 
 .container {
@@ -70,6 +71,7 @@
   align-items: center;
   cursor: pointer;
   border-radius: 2px;
+  outline: none;
 }
 
 .job > .action > button:hover {
@@ -93,6 +95,8 @@
   cursor: pointer;
   border-radius: 2px;
   font-family: "fusi";
+  outline: none;
+  letter-spacing: 3px;
 }
 
 .details > .job-trigger:hover {

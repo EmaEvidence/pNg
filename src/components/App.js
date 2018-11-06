@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
+
+
 import '../css/App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleGenerateNumber = this.handleGenerateNumber.bind(this);
+  }
+
+  handleGenerateNumber() {
+    // const numbers = generateNumbers();
+    // const name = new Date().getMilliseconds();
+    // console.log(numbers);
+    // writeFile(`${__dirname}/numbers/${name}.txt`, numbers, (err, data) => {
+    //   console.log(err || data);
+    // });
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,7 +29,7 @@ class App extends Component {
               Phone Number Generator. <br />
               We are cut out to generate Phone Numbers for you.
             </h4>
-            <button className="job-trigger">
+            <button className="job-trigger" onClick={this.handleGenerateNumber}>
               Create Phone Numbers
             </button>
           </div>
