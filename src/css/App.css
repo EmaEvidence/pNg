@@ -9,12 +9,6 @@
   letter-spacing: 1px;
 }
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-}
-
 .details {
   flex-basis: 50%;
   display: flex;
@@ -28,35 +22,14 @@
   flex-basis: 50%;
   background: #2d2d2d;
   color: #ffffff;
+  max-width: 50vw;
 }
 
-.jobs > .job-wrapper {
+table {
   width: 80%;
-  margin: auto;
-}
-
-.jobs > .job-wrapper > .job {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  height: 50px;
-  justify-content: space-between;
-  padding: 0 20px;
-  align-items: center;
-  background: #ffffff;
-  border-bottom: 1px solid #2d2d2d;
-}
-
-.job > .details {
-  display: flex;
-  flex-direction: row;
-}
-
-.job > .action {
-  color: #2d2d2d;
-  display: flex;
-  flex-direction: row;
+  margin: auto !important;
+  height: 70vh;
+  text-align: center;
 }
 
 .job > .action > button {
@@ -86,7 +59,7 @@
   color: #2d2d2d;
 }
 
-.details > .job-trigger {
+.details > .job-trigger, .all-numbers-trigger {
   height: 40px;
   background: #2d2d2d;
   border: 0;
@@ -96,13 +69,102 @@
   border-radius: 2px;
   font-family: "fusi";
   outline: none;
-  letter-spacing: 3px;
+  letter-spacing: 3px; 
 }
 
-.details > .job-trigger:hover {
+.details > .job-trigger:hover, button:hover {
   background: #ffffff;
   color: #2d2d2d;
   border: 1px solid #2d2d2d;
 }
+
+td {
+  border: 1px solid #2d2d2d;
+}
+tbody {
+  max-height: 70vh !important;
+  overflow: auto !important;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: middle;
+  margin: auto;
+  font-size: 14px;
+}
+
+thead, tfoot {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+  height: 40px;
+}
+
+thead > tr {
+  width: 100%;
+}
+
+td.header {
+  width: 105px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .details > .job-trigger {
+    margin-bottom: 30px;
+  }
+
+  .jobs > .job-list {
+    margin-bottom: 30px;
+  }
+}
+
+.date, .first-number, .last-number, .size {
+  width: 25%;
+}
+.action {
+  width: 9%;
+}
+
+.number-container {
+  padding-top: 2%;
+  width: 100%;
+}
+.numbers-wrapper {
+  padding-top: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.numbers-wrapper > span {
+  cursor: pointer;
+}
+
+.numbers {
+  padding-top: 2%; 
+  width: 90%;
+  word-wrap: break-word;
+  overflow: auto;
+  margin: auto;
+  height: 90vh;
+}
+
 
 

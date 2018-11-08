@@ -9,6 +9,8 @@ Route.get('/', (req, res) => {
   }).status(200);
 });
 Route.get('/numbers', phoneNumber.read);
+Route.get('/all_numbers', phoneNumber.readAll);
 Route.post('/numbers', phoneNumber.generate);
+Route.delete('/numbers/:filePath', phoneNumber.delete);
 
 export default Route;
