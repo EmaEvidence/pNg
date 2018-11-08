@@ -1,0 +1,16 @@
+import { Router } from 'express';
+import phoneNumber from '../controller';
+
+const Route = new Router();
+
+Route.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to phone number generator'
+  }).status(200);
+});
+Route.get('/numbers', phoneNumber.read);
+Route.get('/all_numbers', phoneNumber.readAll);
+Route.post('/numbers', phoneNumber.generate);
+Route.delete('/numbers/:filePath', phoneNumber.delete);
+
+export default Route;
