@@ -3,6 +3,7 @@ import axios from 'axios';
 import toastr from 'toastr';
 import JobTable from './JobTable';
 import AllNumbers from './AllNumbers';
+import SingleJob from './SingleJob';
 import '../css/App.css';
 
 toastr.options.timeOut = 10000;
@@ -15,6 +16,9 @@ class App extends Component {
     this.state = {
       jobs: [],
       allNumbers: [],
+      job: {
+        numbers: []
+      }
     }
     this.handleGenerateNumber = this.handleGenerateNumber.bind(this);
     this.getAllNumbers = this.getAllNumbers.bind(this);
@@ -38,7 +42,10 @@ class App extends Component {
       .then((response) => {
         this.setState({
           allNumbers: [],
-          jobs: [...this.state.jobs, response.data.data]
+          jobs: [...this.state.jobs, response.data.data],
+          job: {
+            ...response.data.data
+          }
         });
       })
       .catch((err) => {
@@ -62,12 +69,15 @@ class App extends Component {
   handleBackToList() {
     console.log(1121212)
     this.setState({
-      allNumbers: []
+      allNumbers: [],
+      job: {
+        numbers: []
+      }
     });
   }
 
   render() {
-    const { jobs, allNumbers } = this.state; 
+    const { jobs, allNumbers, job } = this.state; 
     return (
       <div className="App">
         <div className="container">
@@ -86,9 +96,11 @@ class App extends Component {
           </div>
           <div className="jobs">
             {
-              (allNumbers.length !== 0)
-              ? <AllNumbers allNumbers={allNumbers} handleBackToList={this.handleBackToList} />
-              : <JobTable jobs={jobs} />
+              (job.numbers.length !== 0)
+                ? <SingleJob job={job} handleBackToList={this.handleBackToList} />
+                : (allNumbers.length !== 0)
+                ? <AllNumbers allNumbers={allNumbers} jobs={jobs} handleBackToList={this.handleBackToList} />
+                : <JobTable jobs={jobs} />
             }
           </div>
         </div>
