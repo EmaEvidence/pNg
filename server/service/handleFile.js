@@ -13,18 +13,14 @@ const handleFile = {
   
   writeNumbers: (numbers, done) => {
     const name = Date.now();
-    try {
-      fs.appendFileSync(`${__dirname}/numbers/allNumbers.txt`, `,${numbers}`);
-      fs.writeFile(`${__dirname}/numbers/completedJobs/${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`,
-        numbers, (err, data) => {
-          done(err, data,
-            `${__dirname}/numbers/completedJobs/${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`,
-            `${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`
-            );
-      });
-    } catch (err) {
-      done(err, null);
-    }
+    fs.appendFileSync(`${__dirname}/numbers/allNumbers.txt`, `,${numbers}`);
+    fs.writeFile(`${__dirname}/numbers/completedJobs/${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`,
+      numbers, (err, data) => {
+        done(err, data,
+          `${__dirname}/numbers/completedJobs/${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`,
+          `${name}_${numbers[0]}_${numbers[numbers.length - 1]}_.txt`
+          );
+    });
   },
 
   writeLargestNumber: (number, done) => {

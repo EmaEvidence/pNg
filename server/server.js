@@ -22,3 +22,4 @@ app.listen(port, () => {
   console.log('We are live here');
 });
 
+export default app;

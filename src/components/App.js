@@ -23,24 +23,17 @@ class App extends Component {
     this.handleGenerateNumber = this.handleGenerateNumber.bind(this);
     this.getAllNumbers = this.getAllNumbers.bind(this);
     this.handleBackToList = this.handleBackToList.bind(this);
+    this.loadJobs = this.loadJobs.bind(this);
   }
 
   componentDidMount() {
-    axios.get('http://localhost:9000/numbers')
-      .then((response) => {
-        this.setState({
-          jobs: response.data.data
-        });
-      })
-      .catch((err) => {
-        toastr.error('Error Fetching Numbers List');
-      })
+    this.loadJobs();
   }
 
   handleGenerateNumber() {
     axios.post('http://localhost:9000/numbers')
       .then((response) => {
-        this.setState({
+        return this.setState({
           allNumbers: [],
           jobs: [...this.state.jobs, response.data.data],
           job: {
@@ -56,7 +49,7 @@ class App extends Component {
   getAllNumbers() {
     axios.get('http://localhost:9000/all_numbers')
       .then((response) => {
-        this.setState({
+        return this.setState({
           allNumbers: response.data.data.numbers,
           backToList: false
         });
@@ -67,13 +60,24 @@ class App extends Component {
   }
 
   handleBackToList() {
-    console.log(1121212)
     this.setState({
       allNumbers: [],
       job: {
         numbers: []
       }
     });
+  }
+  
+  loadJobs() {
+    axios.get('http://localhost:9000/numbers')
+      .then((response) => {
+        this.setState({
+          jobs: response.data.data
+        });
+      })
+      .catch((err) => {
+        toastr.error('Error Fetching Numbers List');
+      });
   }
 
   render() {
@@ -87,10 +91,10 @@ class App extends Component {
               Phone Number Generator. <br />
               We are cut out to generate Phone Numbers for you.
             </h4>
-            <button className="job-trigger" onClick={this.handleGenerateNumber}>
+            <button type="button" className="job-trigger" onClick={this.handleGenerateNumber}>
               Create Phone Numbers
             </button>
-            <button onClick={this.getAllNumbers} className="all-numbers-trigger">
+            <button type="button" onClick={this.getAllNumbers} className="all-numbers-trigger">
               Get all Numbers
             </button>
           </div>
