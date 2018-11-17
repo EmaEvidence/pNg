@@ -35,34 +35,19 @@ const phoneNumber = {
 
   read: (req, res) => {
     handleFile.readNumbersFolder((err, items) => {
-      if (err) {
+      if (err || items.length === 0) {
         return handleResponse(res, 500, 'Error loading completed Jobs', []);
-      } else if (items.length === 0) {
-        return handleResponse(res, 404, 'No Completed Job found', []);
       } else {
-
         return handleResponse(res, 200, 'Completed Job loaded sucessfully', items);
       }
     })
     return res;
   },
 
-  delete: (req, res) => {
-    const file = req.params.filePath;
-    console.log(file, '=-=-=-=-=-=-=-=-=---')
-    handleFile.deleteFile(file, (item) => {
-      if (!item) {
-        return handleResponse(res, 500, 'Error loading completed Jobs', []);
-      } else {
-        return handleResponse(res, 200, 'File Deleted');
-      }
-    });
-  },
-
   readAll: (req, res) => {
     handleFile.readAll((err, numbers) => {
       if (!err) {
-        return handleResponse(res, 201, 'Numbers loaded sucessfully', {
+        return handleResponse(res, 200, 'Numbers loaded sucessfully', {
           numbers: numbers.toString().split(',')
         });
       }

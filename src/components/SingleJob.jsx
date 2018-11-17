@@ -5,7 +5,7 @@ const SingleJob = (props) => {
   return (
     <div className="numbers-container">
       <div className="numbers-wrapper">
-        <button onClick={handleBackToList} className="all-numbers-trigger">Back to List</button>
+        <button onClick={handleBackToList} className="all-numbers-trigger back-btn">Back to List</button>
         <div className="total-number">
           <span>Total Numbers Generated in the last job: {job.numbers.length}</span>
           <div>
