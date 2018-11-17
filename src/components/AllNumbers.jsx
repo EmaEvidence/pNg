@@ -5,7 +5,7 @@ const AllNumbers = (props) => {
   return (
     <div className="numbers-container">
       <div className="numbers-wrapper">
-        <button onClick={handleBackToList} className="all-numbers-trigger">Back to List</button>
+        <button onClick={handleBackToList} className="all-numbers-trigger back-btn">Back to List</button>
         <div className="total-number">
           Total Numbers Generated in {jobs.length} job(s): {allNumbers.length}
         </div>

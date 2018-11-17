@@ -33,7 +33,7 @@ class App extends Component {
   handleGenerateNumber() {
     axios.post('http://localhost:9000/numbers')
       .then((response) => {
-        return this.setState({
+        this.setState({
           allNumbers: [],
           jobs: [...this.state.jobs, response.data.data],
           job: {
@@ -49,7 +49,7 @@ class App extends Component {
   getAllNumbers() {
     axios.get('http://localhost:9000/all_numbers')
       .then((response) => {
-        return this.setState({
+        this.setState({
           allNumbers: response.data.data.numbers,
           backToList: false
         });
@@ -102,7 +102,7 @@ class App extends Component {
             {
               (job.numbers.length !== 0)
                 ? <SingleJob job={job} handleBackToList={this.handleBackToList} />
-                : (allNumbers.length !== 0)
+                : (allNumbers && allNumbers.length !== 0)
                 ? <AllNumbers allNumbers={allNumbers} jobs={jobs} handleBackToList={this.handleBackToList} />
                 : <JobTable jobs={jobs} />
             }

@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import AllNumbers from '../components/AllNumbers';
 
+configure({ adapter: new Adapter() })
 
 describe('NewPassword component should', () => {
   it('renders without crashing', () => {
-
     const props = {
       allNumbers: ['0123456788', '0123456789'],
       jobs: [
@@ -22,8 +23,14 @@ describe('NewPassword component should', () => {
       ],
       handleBackToList: jest.fn()
     }
-    const div = document.createElement('div');
-    ReactDOM.render(<AllNumbers {...props} />, div);
-    ReactDOM.unmountComponentAtNode(div);
+
+    const wrapper = mount(<AllNumbers {...props} />);
+
+    expect(wrapper.find('.numbers-container').length).toBe(1);
+    expect(wrapper.find('.numbers-wrapper').length).toBe(1);
+    expect(wrapper.find('.back-btn').length).toBe(1);
+    expect(wrapper.find('.total-number').length).toBe(1);
+    expect(wrapper.find('.numbers').length).toBe(1);
+    expect(wrapper.find('.numbers').text()).toEqual('0123456788,0123456789');
   });
 });
