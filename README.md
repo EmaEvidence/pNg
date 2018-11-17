@@ -21,18 +21,19 @@ The functionality of this web app being a node.js app depends on the following t
 5. Open the png folder.
 6. Create a .env file using the .envexample as a guide.
 7. ``` npm install ``` to install all dependencies.
-8. ``` npm run dev-build ``` to build the app.
+8. ``` npm run build ``` to build the app.
 9. ``` npm start-all ``` starts the app.
 10. The app runs on port 3300
 11. ``` npm run test ``` runs the client-side test.
 12. ``` npm run server-test ``` runs the server-side test
-13. The API can be consumed with postman.
+13. ``` npm run start-production ``` runs the the app for production
+14. The API can be consumed with postman.
 
 ## The API.
 The API exposes the following endpoints for consumption:  
-  1. ```POST``` /numbers. Takes no parameter, it generates new random phone Numbers 
-  2. ```GET``` /all_numbers. The API takes no parameter, returns a list of all generated phone numbers. 
-  3. ```GET``` /numbers. Returns the number and details of all completed jobs.
+  1. ```POST``` /numbers. Takes no parameter, it generates new random phone Numbers.   
+  2. ```GET``` /all_numbers. The API takes no parameter, returns a list of all generated phone numbers.  
+  3. ```GET``` /numbers. Returns the number and details of all completed jobs.  
 
 ## Test  
 API test is written with ``` jasmine ``` and ``` supertest ```.
